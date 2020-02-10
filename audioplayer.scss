@@ -1,0 +1,142 @@
+$color-primary: #4298B5;
+$color-hightlight: #4FB6D9;
+$color-primary-dark: #388099;
+$color-gray: #ebebeb;
+$color-light-black: #363636;
+$color-black: #080808;
+*{
+	font-family: sans-serif;
+}
+
+.debug, .debug *{
+	outline: solid 1px rgba(255,0,0,.3);
+}
+.audio{
+	& .audio-player-title{
+		font-size: 16px;
+		font-weight: 600;
+		text-align: center;
+		margin: 16px 0;
+	}
+	& .audio-player-subtitle{
+		font-size: 14px;
+		display: block;
+		text-align: center;
+	}
+	& .audio-album{
+		display: block;
+		max-width: 240px;
+		max-height: 240px;
+		border-radius: 50%;
+		box-shadow: none;
+		margin: 32px auto;
+		transform: scale(1);
+		transition: all .8s;
+	}
+}
+
+.audio_album_shadow{
+	transform: scale(1.05)!important;
+	box-shadow: 0px 30px 45px rgba(0,0,0,.2)!important;
+}
+.audio-player{
+	display: flex;
+	margin: 24px 0;
+	padding: 0 16px;
+	& .btn-player-control{
+		display: inline-block;
+		width: 20px;
+		height: 20px;
+		padding: 8px;
+		line-height: 20px;
+		flex: 0 0 20px;
+		background-repeat: no-repeat;
+		background-position: center center;
+	}
+	& .btn-play{
+		background-image: url('../view/images/btn_play.svg');
+	}
+	& .btn-pause{
+		background-image: url('../view/images/btn_pause.svg');
+	}
+	& .time{
+		font-size: 12px;
+		line-height: 36px;
+		flex: 0 0 40px;
+		text-align: center;
+		padding: 0 8px;
+		display: inline-block;
+	}
+}
+.audio-slider-container{
+	width: auto;
+	margin: 0;
+	padding: 0;
+	flex: 1 1 auto;
+	position: relative;
+
+	&:hover input[type=range]::-webkit-slider-thumb{
+		transform: scale(2)!important;
+	}
+	& .audio-slider{
+		-webkit-appearance: none;
+		appearance: none;
+		border: none;
+		width: 100%;
+		height: 8px;
+		background-color: transparent;
+		margin: 14px 0;
+		outline: none;
+		&::-webkit-slider-thumb{
+			-webkit-appearance: none;
+			appearance: none;
+			cursor: pointer;
+			width: 8px;
+			height: 8px;
+			border-radius: 50%;
+			transform: scale(0);
+			background-color: #4298B5;
+			z-index: 10;
+			transition: transform ease-in-out .1s
+		}
+	}
+	& .audio-progress-played, & .audio-progress-loaded, & .audio-slider-bg{
+		height: 8px;
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+	}
+	& .audio-progress-played{
+		width: 0;
+		background-color: #4298B5;
+		z-index: -10;
+	}
+	& .audio-progress-loaded{
+		background-color: rgba(0,0,0,.1);
+		transition: all .2s;
+		z-index: -11;
+	}
+	& .audio-slider-bg{
+		background-color: rgba(0,0,0,.1);
+		width: 100%;
+		z-index: -12;
+	}
+}
+
+.player-link {
+	text-align: center;
+	& a{
+		display: inline-block;
+		font-size: 12px!important;
+		font-weight: 600!important;
+		color: $color-black!important;
+		padding-left: 24px;
+		line-height: 32px;
+		margin: 0 8px;
+		background-repeat: no-repeat;
+		background-position: center left;
+	}
+}
+	.mx-auto{
+		margin: 0 auto;
+	}

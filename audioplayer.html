@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Audio Player</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script src="jquery.transit.min.js"></script>
+		<link href="audioplayer.css" rel="stylesheet">
+	</head>
+	<body>
+			<div class="audio">
+				<img id="audio_album" class="audio-album mx-auto" src="../view/images/sermon_p.png">
+				<h6 class="audio-player-title">Principles for Protection from Deception (Pt 1)</h6>
+				<span class="audio-player-subtitle">Colossians 2:4-23 - <span>20 November, 2019</span></span>
+				<div class="audio-player">
+					<!--<a class="btn-player-control btn-play" href="###">abc</a>-->
+					<a id="btn_play" class="btn-player-control btn-play" href="###"></a>
+					<span id="time_played" class="time">00:00</span>
+					<!--
+					<div class="progress-container"><div class="progress_current"></div></div>
+					-->
+					<div class="audio-slider-container">
+						<input type="range" value="0" min="0" max="5000" class="audio-slider" id="audio_slider">
+						<div class="audio-progress-played"></div>
+						<div class="audio-progress-loaded"></div>
+						<div class="audio-slider-bg"></div>
+					</div>
+					<span id="time_total" class="time">00:00</span>
+				</div>
+				<div class="player-link">
+					<a style="background-image: url('../view/images/icon_download.svg');" href="###">Outline</a>
+					<a style="background-image: url('../view/images/icon_download.svg');" href="###">Audio</a>
+					<a style="background-image: url('../view/images/icon_rss.svg');" href="###">Subscribe</a>
+				</div>
+				<script src="audioplayer.js"></script>
+			</div>
+		</div>
+	</body>
+</html>

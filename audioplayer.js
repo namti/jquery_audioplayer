@@ -1,4 +1,3 @@
-var isPlay = false;
 var int_currentTime;
 var int_buffer;
 var audio = new Audio();
@@ -20,7 +19,7 @@ $(function(){
 	}, 500);
 
 	$('#btn_play').click(function(){
-		if(!isPlay){
+		if(audio.paused){
 			play();
 		}else{
 			pause();
@@ -32,7 +31,6 @@ $(function(){
 		audio.play();
 		$('#audio_album').addClass('audio_album_shadow');
 		$('#btn_play').addClass('btn-pause').removeClass('btn-play');
-		isPlay = true;
 		if(audio.duration.toString().toLowerCase() == "nan"){
 			$('#time_total').text('00:00');
 		}
@@ -46,8 +44,14 @@ $(function(){
 		audio.pause();
 		$('#audio_album').removeClass('audio_album_shadow');
 		$('#btn_play').removeClass('btn-pause').addClass('btn-play');
-		isPlay = false;
 		clearInterval(int_currentTime);
+	}
+
+	audio.onplay = function (){
+		play();
+	}
+	audio.onpause = function(){
+		pause();
 	}
 
 	// Sync the current progress when drag the slider
@@ -57,14 +61,15 @@ $(function(){
 	}
 	function updatePlayStatus(object){
 		int_currentTime = setInterval(function(){
-			if(isPlay){
+			if(!audio.paused){
 				$('#time_played').text(convertToTime(audio.currentTime));
 				$('#audio_slider').val((audio.currentTime / audio.duration)* 5000);
 				$(".audio-progress-played").css("width", ($("#audio_slider").val() / 5000) * 100 + '%');
 				// Stop playing if it reaches the end
-				if(audio.currentTime == audio.duration){
-					pause();
-				}
+				
+			}
+			if(audio.ended){
+				pause();
 			}
 		}, 200);
 	}

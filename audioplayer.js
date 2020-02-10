@@ -4,7 +4,7 @@ var int_buffer;
 var audio = new Audio();
 
 $(function(){
-	audio.src = "Break Free - Taryn Southern.mp3";
+	audio.src = "sample.mp3";
 	audio.preload = "metadata";
 	audio.load();
 

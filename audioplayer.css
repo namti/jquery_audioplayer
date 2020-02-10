@@ -49,10 +49,10 @@
   background-position: center center;
 }
 .audio-player .btn-play {
-  background-image: url("../view/images/btn_play.svg");
+  background-image: url("images/btn_play.svg");
 }
 .audio-player .btn-pause {
-  background-image: url("../view/images/btn_pause.svg");
+  background-image: url("images/btn_pause.svg");
 }
 .audio-player .time {
   font-size: 12px;

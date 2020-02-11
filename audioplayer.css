@@ -117,23 +117,4 @@
   z-index: -12;
 }
 
-.player-link {
-  text-align: center;
-}
-.player-link a {
-  display: inline-block;
-  font-size: 12px !important;
-  font-weight: 600 !important;
-  color: #080808 !important;
-  padding-left: 24px;
-  line-height: 32px;
-  margin: 0 8px;
-  background-repeat: no-repeat;
-  background-position: center left;
-}
-
-.mx-auto {
-  margin: 0 auto;
-}
-
 /*# sourceMappingURL=audioplayer.css.map */

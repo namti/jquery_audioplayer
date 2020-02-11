@@ -123,20 +123,3 @@ $color-black: #080808;
 	}
 }
 
-.player-link {
-	text-align: center;
-	& a{
-		display: inline-block;
-		font-size: 12px!important;
-		font-weight: 600!important;
-		color: $color-black!important;
-		padding-left: 24px;
-		line-height: 32px;
-		margin: 0 8px;
-		background-repeat: no-repeat;
-		background-position: center left;
-	}
-}
-	.mx-auto{
-		margin: 0 auto;
-	}

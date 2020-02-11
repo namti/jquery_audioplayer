@@ -1,5 +1,6 @@
 var int_currentTime;
 var int_buffer;
+var isSeeking = false;
 var audio = new Audio();
 
 $(function(){
@@ -63,21 +64,25 @@ $(function(){
 		int_currentTime = setInterval(function(){
 			if(!audio.paused){
 				$('#time_played').text(convertToTime(audio.currentTime));
-				$('#audio_slider').val((audio.currentTime / audio.duration)* 5000);
-				$(".audio-progress-played").css("width", ($("#audio_slider").val() / 5000) * 100 + '%');
-				// Stop playing if it reaches the end
-				
+				if(!isSeeking){
+					$('#audio_slider').val((audio.currentTime / audio.duration)* 5000);
+					$(".audio-progress-played").css("width", ($("#audio_slider").val() / 5000) * 100 + '%');
+				}
 			}
+			// Stop playing if it reaches the end
 			if(audio.ended){
 				pause();
 			}
 		}, 200);
 	}
 
-	$("#audio_slider").on('input', fastSeek);
-	function fastSeek(){
+	$("#audio_slider").mousedown(function(){
+		isSeeking = true;
+	}).mouseup(function(){
+		isSeeking = false;
 		audio.currentTime = ($("#audio_slider").val() / 5000) * audio.duration;
-	}
+	});
+
 
 	// Convert milliseconds to regular time format
 	function convertToTime(s){

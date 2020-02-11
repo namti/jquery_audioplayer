@@ -62,12 +62,10 @@ $(function(){
 	}
 	function updatePlayStatus(object){
 		int_currentTime = setInterval(function(){
-			if(!audio.paused){
+			if(!audio.paused && !isSeeking){
 				$('#time_played').text(convertToTime(audio.currentTime));
-				if(!isSeeking){
-					$('#audio_slider').val((audio.currentTime / audio.duration)* 5000);
-					$(".audio-progress-played").css("width", ($("#audio_slider").val() / 5000) * 100 + '%');
-				}
+				$('#audio_slider').val((audio.currentTime / audio.duration)* 5000);
+				$(".audio-progress-played").css("width", ($("#audio_slider").val() / 5000) * 100 + '%');
 			}
 			// Stop playing if it reaches the end
 			if(audio.ended){
@@ -81,8 +79,13 @@ $(function(){
 	}).mouseup(function(){
 		isSeeking = false;
 		audio.currentTime = ($("#audio_slider").val() / 5000) * audio.duration;
-	});
+	}).on('input', fastSeek);
 
+	function fastSeek(){
+		if(isSeeking){
+			$('#time_played').text(convertToTime(($("#audio_slider").val() / 5000) * audio.duration));
+		}
+	}
 
 	// Convert milliseconds to regular time format
 	function convertToTime(s){

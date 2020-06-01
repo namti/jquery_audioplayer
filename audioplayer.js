@@ -89,22 +89,25 @@ $(function(){
 
 	// Convert milliseconds to regular time format
 	function convertToTime(s){
+		if(s.toString().toLowerCase() == 'nan'){
+			return '00:00';
+		}
 		var time = "";
-		var h = Math.floor(s / 60 / 60 );
+		var h = Math.floor((s / 60) / 60 );
 		var m = Math.floor(s / 60);
-		var s = Math.floor(s % 60);
+		var s = Math.round(s % 60);
 		// hours
 		if(h != 0)
 		{
-			if(h.toString().length < 2){
+			if(h < 10){
 				time += ("0" + h + ":");
 			}else{
 				time += h + ":";
 			}
 		}
 		// minutes
-		if(m != 0 && m < 24){
-			if(m.toString().length < 2){
+		if(m != 0 && m < 60){
+			if(m < 10){
 				time += ("0" + m + ":");
 			}else{
 				time += m + ":";
@@ -113,8 +116,8 @@ $(function(){
 			time += "00:";
 		}
 		// seconds
-		if(s != 0){
-			if(s.toString().length < 2){
+		if(s != 0 && s < 60){
+			if(s < 10){
 				time += ("0" + s);
 			}else{
 				time += s;
